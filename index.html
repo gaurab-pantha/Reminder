@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Reminder</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+
+        <header class="app-header">
+            <div class="app-header_row">
+                <div class="app-header_title">
+                    <img class="bell-mark" src="icons/icon32.png" width="20" height="20" alt="" />
+                    <h1>Reminder</h1>
+                </div>
+                <time id="liveClock" class="live-clock"></time>
+            </div>
+
+            <div id="nextUp" class="next-up">
+                <span class="next-up_label">Nothing scheduled</span>
+            </div>
+        </header>
+
+        <form id="reminderForm" class="reminder-form" novalidate>
+            <div class="field">
+                <label for="taskInput">What's this about?</label>
+                <input type="text" id="taskInput" placeholder="e.g. Call the dentist" maxlength="200" autocomplete="off" />
+            </div>
+
+            <div class="field">
+                <label for="timeInput">When</label>
+                <input type="datetime-local" id="timeInput" />
+            </div>
+
+            <button type="submit" class="primary-btn">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                Set alarm
+            </button>
+
+            <p id="formError" class="form-error" role="alert"></p>
+        </form>
+
+        <section class="list-section">
+            <div id="listWrapper" class="list-wrapper">
+                <ul id="reminderList" class="reminder-list"></ul>
+
+                <div id="emptyState" class="empty-state">
+                    <img src="icons/icon48.png" width="28" height="28" alt=""/>
+                    <p>No alarams set.<br>Add one above.</p>
+                </div>
+            </div>
+        </section>
+
+        <script src="popup.js"></script>
+    </body>
+</html>
