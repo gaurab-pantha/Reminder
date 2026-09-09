@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="style.css" />
     </head>
 
-    <body>
+    <body data-theme="light">
 
         <header class="app-header">
             <div class="app-header_row">
@@ -17,40 +17,159 @@
                 <time id="liveClock" class="live-clock"></time>
             </div>
 
-            <div id="nextUp" class="next-up">
-                <span class="next-up_label">Nothing scheduled</span>
-            </div>
+            <nav class="tab-bar" id="tabBar">
+                <button type="button" class="tab-btn is-active" data-tab="active"> Active</button>
+                <button type="button" class="tab-btn" data-tab="history">History</button>
+                <button type="button" class="tab-btn" data-tab="seetings">Settings</button>
+            </nav>
+
         </header>
 
-        <form id="reminderForm" class="reminder-form" novalidate>
-            <div class="field">
-                <label for="taskInput">What's this about?</label>
-                <input type="text" id="taskInput" placeholder="e.g. Call the dentist" maxlength="200" autocomplete="off" />
-            </div>
 
-            <div class="field">
-                <label for="timeInput">When</label>
-                <input type="datetime-local" id="timeInput" />
-            </div>
+        <main>
 
-            <button type="submit" class="primary-btn">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-                Set alarm
-            </button>
+            <section id="panel-active" class="panel">
 
-            <p id="formError" class="form-error" role="alert"></p>
-        </form>
-
-        <section class="list-section">
-            <div id="listWrapper" class="list-wrapper">
-                <ul id="reminderList" class="reminder-list"></ul>
-
-                <div id="emptyState" class="empty-state">
-                    <img src="icons/icon48.png" width="28" height="28" alt=""/>
-                    <p>No alarams set.<br>Add one above.</p>
+                <div id="nextUp" class="panel">
+                    <span class="next-up_label">Nothing Scheduled</span>
                 </div>
-            </div>
-        </section>
+
+                <div class="toolbar">
+                    <input type="search" id="searchInput" placeholder="Search alarms\u2026" autocomplete="off" />
+
+                    <select id="categoryFilter">
+                        <option value="all">All categories</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="health">Health</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <button type="button" id="toggleFormBtn" class="ghost-btn" aria-expanded="false">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+
+                        New
+
+                    </button>
+                </div>
+
+                <form id="reminderForm" class="reminder-form" novalidate hidden>
+                    <div class="field">
+                        <label for="taskInput">What's this about?</label>
+                        <input type="text" id="taskInput" placeholder="e.g. Call the dentist" maxlength="200" autocomplete="off" />
+                    </div>
+                    <div class="field">
+                        <label for="timeInput">When</label>
+                        <input type="datetime-local" id="timeInput" />
+                    </div>
+
+                    <div class="field-row-inline">
+                        <div class="field">
+                            <label for="priorityInput">Priority</label>
+                            <select id="priorityInput">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="categoryInput">Category</label>
+                            <select id="categoryInput">
+                                <option value="work">Work</option>
+                                <option value="personal">Personal</option>
+                                <option value="health">Health</option>
+                                <option value="other" selected>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="repeatInput">Repeat</label>
+                        <select id="repeatInput">
+                            <option value="none" selected>Doesn't repeat</option>
+                            <option value="daily">Every Day</option>
+                            <option value="weekly">Every Week</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="primary-btn">Set alarm</button>
+                    <p id="formError" class="form-error" role="alert"></p>
+                </form>
+
+                <div id="listWrapper" class="list-wrapper">
+                    <ul id="reminderList" class="reminder-list"></ul>
+                    <div id="emptyState" class="empty-state">
+                        <img src="icons/icon48.png" width="28" height="28" alt="" />
+                        <p>No alarms set.<br>Add one above.</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="panel-history" class="panel" hidden>
+                <div class="toolbar">
+                    <span class="toolbar_label">Alarms that already fired</span>
+                    <button type="button" id="clearHistoryBtn" class="ghost-btn danger-text">Clear</button>
+                </div>
+
+                <div class="list-wrapper">
+                    <ul id="historyList" class="reminder-list"></ul>
+                    <div id="historyEmpty" class="empty-state">
+                        <p>Nothing here yet.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-settings" class="panel" hidden>
+                <div class="settings-group">
+                    <div class="settings-group_title">Appearance</div>
+                    <label class="switch-row">
+                        <span>Dark Mode</span>
+                        <span class="switch">
+                            <input type="checkbox" id="themeToggle" />
+                            <span class="switch_track"></span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group_title">Notifications</div>
+                    <label class="switch-row">
+                        <span>Play Sound</span>
+                        <span class="switch">
+                            <input type="checkbox" id="soundToggle" checked />
+                            <span class="switch_track"></span>
+                        </span>
+                    </label>
+
+                    <label class="field-row">
+                        <span>Snooze Length</span>
+                        <span class="field-row_control">
+                            <input type="number" id="snoozeInput" min="1" max="100" value="10" />
+                            <span class="field-row_unit">min</span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group_title">Your data</div>
+                    <div class="setings-action">
+                        <button type="button" id="exportBtn" class="secondary-btn">Export as JSON</button>
+                        <button type="button" id="importBtn" class="secondary-btn">Import JSON</button>
+                        <input type="file" id="importFile" accept="application/json" hidden />
+                    </div>
+                    <p id="importStatus" class="settings-status"></p>
+                </div>
+
+                <div class="settings-group">
+                    <div class="settings-group_title">Reset</div>
+                    <button type="button" id="clearAllBtn" class="danger-btn">Clear all active alarms</button>
+                </div>
+
+                <p class="version-tag">Reminder v1.2.0</p>
+            </section>
+        </main>
 
         <script src="popup.js"></script>
     </body>
