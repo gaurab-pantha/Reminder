@@ -3,15 +3,15 @@
     "name": "Reminder",
     "version": "1.1.0",
     "description": "Set one-off or recurring alarms, snooze or dismiss them from the notification itself, and jump straight to one from any page by right-clicking selected text.",
-    "permission": ["storage", "alarms", "notification", "contextMenus"],
+    "permissions": ["storage", "alarms", "notifications", "contextMenus"],
     "background": {
         "service_worker": "background.js"
     },
 
     "action": {
-        "defult_popup": "index.html",
-        "defult_title": "Reminder",
-        "defult_icon": {
+        "default_popup": "index.html",
+        "default_title": "Reminder",
+        "default_icon": {
             "16": "icons/icon16.png",
             "32": "icons/icon32.png",
             "48": "icons/icon48.png"
