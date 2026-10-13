@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
- 
-:root {
+ :root {
   --ink: #16181d;
   --ink-soft: #6b7075;
   --line: #e9e8e6;
@@ -605,4 +603,57 @@ select:focus {
   opacity: 0.6;
   padding: 12px 0 4px;
   margin: 0;
+}
+
+/* ---- additions: edit button, form actions, credit ---- */
+.edit-btn {
+  background: none;
+  border: none;
+  padding: 3px;
+  border-radius: 6px;
+  color: #c9c6bf;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  transition: color 0.12s var(--ease), background 0.12s var(--ease);
+}
+
+.edit-btn:hover {
+  color: var(--amber-deep);
+  background: var(--amber-tint);
+}
+
+.edit-btn:focus-visible,
+.delete-btn:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 1px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.form-actions .primary-btn {
+  flex: 1;
+  justify-content: center;
+}
+
+.form-actions .secondary-btn {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+}
+
+.about-tag {
+  text-align: center;
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  opacity: 0.8;
+  padding: 0 0 14px;
+  margin: 0;
+}
+
+[hidden] {
+  display: none !important;
 }
