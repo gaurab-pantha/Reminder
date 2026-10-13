@@ -1,20 +1,22 @@
-# Privacy Policy — Reminder
+Privacy Policy for Reminder – Alarms & Notifications
+Last updated: October 13, 2026
 
-**Last updated:** October 12, 2026
+Reminder is a browser extension that lets you create reminders and get a notification when they are due. It was made by Gaurab for Hack Club.
 
-Reminder is a Chrome extension designed to help users organize tasks and reminders.
+What data the extension handles
+The reminders you type, your reminder history, and your settings (theme, sound, snooze length). This data is saved only in your browser's local extension storage on your own device.
 
-### Information We Handle
-Reminder may store reminder titles, dates, times, and preferences locally in the user's browser using Chrome's storage functionality.
+What we do not do
+Reminder does not collect, transmit, sell, share, or transfer your data to anyone. It has no accounts, no servers, no analytics, no tracking, and no ads, and it makes no network requests.
 
-### Data Collection and Sharing
-Reminder does not transmit reminder information to an external server or sell or share personal information with third parties, provided the extension operates entirely locally as described.
+Selected text
+If you use the "Remind me about..." right-click option, the text you selected is used only to fill in the reminder form on your device.
 
-### Data Security
-Locally stored information is managed by the browser. Users can remove stored reminder data by deleting their reminders or uninstalling the extension.
+Exporting and importing
+If you export your reminders, a JSON file is saved to your own computer. Importing reads a file that you choose. Nothing is uploaded anywhere.
 
-### Changes to This Policy
-This policy may be updated if the extension's features or data practices change.
+Deleting your data
+You can delete reminders and history inside the extension, or remove all data by uninstalling the extension.
 
-### Contact
-For questions about this privacy policy, contact the extension publisher through the contact email listed on the Chrome Web Store.
+Contact
+If you have questions, contact: [gpantha99@gmail.com]
