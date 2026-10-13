@@ -2,15 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Reminder</title>
+        <title>Reminder – Alarms &amp; Notifications</title>
         <link rel="stylesheet" href="style.css" />
     </head>
 
     <body data-theme="light">
 
         <header class="app-header">
-            <div class="app-header_row">
-                <div class="app-header_title">
+            <div class="app-header__row">
+                <div class="app-header__title">
                     <img class="bell-mark" src="icons/icon32.png" width="20" height="20" alt="" />
                     <h1>Reminder</h1>
                 </div>
@@ -20,7 +20,7 @@
             <nav class="tab-bar" id="tabBar">
                 <button type="button" class="tab-btn is-active" data-tab="active"> Active</button>
                 <button type="button" class="tab-btn" data-tab="history">History</button>
-                <button type="button" class="tab-btn" data-tab="seetings">Settings</button>
+                <button type="button" class="tab-btn" data-tab="settings">Settings</button>
             </nav>
 
         </header>
@@ -30,22 +30,22 @@
 
             <section id="panel-active" class="panel">
 
-                <div id="nextUp" class="panel">
-                    <span class="next-up_label">Nothing Scheduled</span>
+                <div id="nextUp" class="next-up">
+                    <span class="next-up__label">Nothing Scheduled</span>
                 </div>
 
                 <div class="toolbar">
-                    <input type="search" id="searchInput" placeholder="Search alarms\u2026" autocomplete="off" />
+                    <input type="search" id="searchInput" placeholder="Search alarms…" autocomplete="off" />
 
                     <select id="categoryFilter">
-                        <option value="all">All categories</option>
+                        <option value="all">All</option>
                         <option value="work">Work</option>
                         <option value="personal">Personal</option>
                         <option value="health">Health</option>
                         <option value="other">Other</option>
                     </select>
 
-                    <button type="button" id="toggleFormBtn" class="ghost-btn" aria-expanded="false">
+                    <button type="button" id="toggleFormBtn" class="ghost-btn" aria-expanded="false" aria-label="New reminder">
                         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
 
                         New
@@ -93,7 +93,10 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="primary-btn">Set alarm</button>
+                    <div class="form-actions">
+                        <button type="submit" id="submitBtn" class="primary-btn">Set alarm</button>
+                        <button type="button" id="cancelBtn" class="secondary-btn">Cancel</button>
+                    </div>
                     <p id="formError" class="form-error" role="alert"></p>
                 </form>
 
@@ -109,7 +112,7 @@
 
             <section id="panel-history" class="panel" hidden>
                 <div class="toolbar">
-                    <span class="toolbar_label">Alarms that already fired</span>
+                    <span class="toolbar__label">Alarms that already fired</span>
                     <button type="button" id="clearHistoryBtn" class="ghost-btn danger-text">Clear</button>
                 </div>
 
@@ -123,38 +126,38 @@
 
             <section id="panel-settings" class="panel" hidden>
                 <div class="settings-group">
-                    <div class="settings-group_title">Appearance</div>
+                    <div class="settings-group__title">Appearance</div>
                     <label class="switch-row">
                         <span>Dark Mode</span>
                         <span class="switch">
                             <input type="checkbox" id="themeToggle" />
-                            <span class="switch_track"></span>
+                            <span class="switch__track"></span>
                         </span>
                     </label>
                 </div>
 
                 <div class="settings-group">
-                    <div class="settings-group_title">Notifications</div>
+                    <div class="settings-group__title">Notifications</div>
                     <label class="switch-row">
                         <span>Play Sound</span>
                         <span class="switch">
                             <input type="checkbox" id="soundToggle" checked />
-                            <span class="switch_track"></span>
+                            <span class="switch__track"></span>
                         </span>
                     </label>
 
                     <label class="field-row">
                         <span>Snooze Length</span>
-                        <span class="field-row_control">
-                            <input type="number" id="snoozeInput" min="1" max="100" value="10" />
-                            <span class="field-row_unit">min</span>
+                        <span class="field-row__control">
+                            <input type="number" id="snoozeInput" min="1" max="180" value="10" />
+                            <span class="field-row__unit">min</span>
                         </span>
                     </label>
                 </div>
 
                 <div class="settings-group">
-                    <div class="settings-group_title">Your data</div>
-                    <div class="setings-action">
+                    <div class="settings-group__title">Your data</div>
+                    <div class="settings-actions">
                         <button type="button" id="exportBtn" class="secondary-btn">Export as JSON</button>
                         <button type="button" id="importBtn" class="secondary-btn">Import JSON</button>
                         <input type="file" id="importFile" accept="application/json" hidden />
@@ -163,11 +166,12 @@
                 </div>
 
                 <div class="settings-group">
-                    <div class="settings-group_title">Reset</div>
+                    <div class="settings-group__title">Reset</div>
                     <button type="button" id="clearAllBtn" class="danger-btn">Clear all active alarms</button>
                 </div>
 
-                <p class="version-tag">Reminder v1.2.0</p>
+                <p class="version-tag">Reminder v1.3.0</p>
+                <p class="about-tag">Made by Gaurab for Hack Club</p>
             </section>
         </main>
 
